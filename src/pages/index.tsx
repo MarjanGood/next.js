@@ -3,9 +3,21 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from "next/link"
+import { useRouter } from 'next/router'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+const router = useRouter();
+
+const clickHandler=()=>{
+
+ console.log("click on it");
+//router.push("/students"); //=> browser back arrow working
+ router.replace("/students"); //=> with out history of back arrow
+
+}
+
   return (
     <>
       <Head>
@@ -23,9 +35,16 @@ export default function Home() {
               <Link href="/about" replace>
                 go to about page 
               </Link>
+            </li>
+            <li> 
               <Link href="/students" replace>
                 go to studentsId page 
               </Link>
+            </li>
+            <li>
+              <button onClick={clickHandler}>
+                Login
+              </button>
             </li>
           </ul>
           <p>
